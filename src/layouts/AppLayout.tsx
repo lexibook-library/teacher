@@ -68,16 +68,18 @@ function Sidebar({ collapsed, onClose }: { collapsed: boolean; onClose?: () => v
   const location = useLocation();
   return (
     <aside className={`${collapsed ? "w-20" : "w-72"} flex h-full flex-col border-r border-gray-200 bg-white transition-all`}>
-      <div className="flex h-16 items-center gap-3 border-b border-gray-200 px-4">
-        <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-white">
-          <BookOpen className="h-5 w-5" />
-        </div>
-        {!collapsed ? (
-          <div className="min-w-0">
-            <p className="truncate text-sm font-bold text-ink">iRead Teacher</p>
-            <p className="truncate text-xs text-muted">Quản lý đọc hiểu</p>
+      <div className="flex h-16 items-center gap-2 border-b border-gray-200 px-4">
+        <NavLink to="/dashboard" onClick={onClose} className="flex min-w-0 flex-1 items-center gap-3 rounded-xl transition hover:bg-brand-soft/50">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand text-white">
+            <BookOpen className="h-5 w-5" />
           </div>
-        ) : null}
+          {!collapsed ? (
+            <div className="min-w-0">
+              <p className="truncate text-sm font-bold text-ink">Lexibook Library</p>
+              <p className="truncate text-xs text-muted">Quản lý đọc hiểu</p>
+            </div>
+          ) : null}
+        </NavLink>
         {onClose ? <button onClick={onClose} className="ml-auto rounded-lg p-2 lg:hidden"><X className="h-5 w-5" /></button> : null}
       </div>
       <nav className="flex-1 space-y-2 overflow-y-auto p-3">
